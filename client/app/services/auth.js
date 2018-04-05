@@ -97,6 +97,8 @@ function CurrentUserService() {
     return this.hasPermission('admin') || (userId && (userId === this.id));
   };
 
+  this.isSupplier = this.hasPermission('supplier');
+
   this.hasPermission = permission => this.permissions.indexOf(permission) !== -1;
 
   this.isAdmin = this.hasPermission('admin');

@@ -16,6 +16,13 @@ function controller($rootScope, $location, $route, $uibModal, Auth, currentUser,
   this.showSettingsMenu = currentUser.hasPermission('list_users');
   this.showDashboardsMenu = currentUser.hasPermission('list_dashboards');
 
+  if(currentUser.hasPermission('hf_supplier')) {
+    this.showQueriesMenu = false;
+    this.showAlertsLink = false;
+    this.showNewQueryMenu = false;
+    this.showSettingsMenu = false;
+  }
+
   this.reload = () => {
     logger('Reloading dashboards and queries.');
     Dashboard.favorites().$promise.then((data) => {
